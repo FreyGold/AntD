@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+* {
+   line-height: 1rem;
+}
+
+@theme {
+   --color-primary: var(--c-primary);
+   --color-primary-dark: var(--c-primary-dark);
+   --color-secondary: var(--c-secondary);
+   --color-background: var(--c-background);
+   --color-background-dark: var(--c-background-dark);
+   --color-text: var(--c-text);
+   --color-card: var(--c-card);
+   --color-border: var(--c-border);
+   --color-input: var(--c-input);
+   --color-danger: var(--c-danger);
+   --color-danger-content: var(--c-danger-content);
+   --color-success: var(--c-success);
+   --color-warning: var(--c-warning);
+   --color-info: var(--c-info);
+}
