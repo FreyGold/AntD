@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import MainLayout from "@/layouts/MainLayout";
 import App from "@/App";
+import { UiProvider } from "./services/context/UiProvider";
+import ToDo from "./pages/dashboard/ToDo";
 
 const router = createBrowserRouter([
    {
@@ -11,13 +13,15 @@ const router = createBrowserRouter([
       element: <MainLayout />,
       children: [
          { index: true, element: <App /> },
-         { path: "signup", element: <>Signup</> },
+         { path: "/todo", element: <ToDo /> },
       ],
    },
 ]);
 
 createRoot(document.getElementById("root")!).render(
    <StrictMode>
-      <RouterProvider router={router} />
+      <UiProvider>
+         <RouterProvider router={router} />
+      </UiProvider>
    </StrictMode>
 );
