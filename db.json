@@ -1,0 +1,84 @@
+{
+   "tasks": [
+      {
+         "id": "1",
+         "name": "Implement user authentication system",
+         "assignee": "John Smith",
+         "dueDate": "2025-07-25",
+         "priority": "high",
+         "status": "in-progress"
+      },
+      {
+         "id": "2",
+         "name": "Design landing page mockups",
+         "assignee": "Sarah Johnson",
+         "dueDate": "2025-07-20",
+         "priority": "medium",
+         "status": "completed"
+      },
+      {
+         "id": "3",
+         "name": "Set up CI/CD pipeline",
+         "assignee": "Mike Chen",
+         "dueDate": "2025-07-30",
+         "priority": "high",
+         "status": "pending"
+      },
+      {
+         "id": "4",
+         "name": "Write API documentation",
+         "assignee": "Emily Davis",
+         "dueDate": "2025-07-18",
+         "priority": "low",
+         "status": "overdue"
+      },
+      {
+         "id": "5",
+         "name": "Fix mobile responsiveness issues",
+         "assignee": "Alex Rodriguez",
+         "dueDate": "2025-07-22",
+         "priority": "medium",
+         "status": "in-progress"
+      },
+      {
+         "id": "6",
+         "name": "Conduct user testing sessions",
+         "assignee": "Lisa Wang",
+         "dueDate": "2025-08-01",
+         "priority": "medium",
+         "status": "pending"
+      },
+      {
+         "id": "7",
+         "name": "Optimize database queries",
+         "assignee": "David Kim",
+         "dueDate": "2025-07-28",
+         "priority": "high",
+         "status": "in-progress"
+      },
+      {
+         "id": "8",
+         "name": "Update project dependencies",
+         "assignee": "Rachel Green",
+         "dueDate": "2025-07-16",
+         "priority": "low",
+         "status": "completed"
+      },
+      {
+         "id": "9",
+         "name": "Implement dark mode toggle",
+         "assignee": "Tom Wilson",
+         "dueDate": "2025-08-05",
+         "priority": "low",
+         "status": "pending"
+      },
+      {
+         "id": "10",
+         "name": "Review code for security vulnerabilities",
+         "assignee": "Jennifer Lee",
+         "dueDate": "2025-07-24",
+         "priority": "high",
+         "status": "in-progress"
+      }
+   ]
+}
