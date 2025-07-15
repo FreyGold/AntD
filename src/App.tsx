@@ -6,7 +6,7 @@ import "@/assets/styles/global.css";
 function App() {
    return (
       <UiProvider>
-         <div className="w-full h-full flex justify-center items-center bg-background text-primary">
+         <div className="w-full h-full flex justify-center items-center bg-background-dark text-primary rounded-4xl">
             <ThemeToggleButton></ThemeToggleButton>
          </div>
       </UiProvider>

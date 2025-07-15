@@ -3,7 +3,12 @@
 * {
    line-height: 1rem;
 }
-
+html,
+body,
+#root {
+   height: 100%;
+   width: 100%;
+}
 @theme {
    --color-primary: var(--c-primary);
    --color-primary-dark: var(--c-primary-dark);
