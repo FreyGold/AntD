@@ -1,5 +1,7 @@
+import ToDoLayout from "@/layouts/ToDoLayout";
+
 function ToDo() {
-   return <div>yet to work on</div>;
+   return <ToDoLayout />;
 }
 
 export default ToDo;
