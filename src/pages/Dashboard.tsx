@@ -1,6 +1,6 @@
 import ThemeToggleButton from "@/components/ToggleTheme";
 
-function Home() {
+function Dashboard() {
    return (
       <div className="w-full h-full flex justify-center items-center bg-background-dark text-text rounded-4xl">
          <ThemeToggleButton></ThemeToggleButton>
@@ -8,4 +8,4 @@ function Home() {
    );
 }
 
-export default Home;
+export default Dashboard;
