@@ -1,5 +1,5 @@
 import Input from "@/UI/Input";
-import { BellOutlined } from "@ant-design/icons";
+import { BellOutlined, DownOutlined } from "@ant-design/icons";
 
 function Bar() {
    return (
@@ -7,13 +7,16 @@ function Bar() {
          <Input />
          {/* // is this a correct approach? // moved to UI folder */}
          {/* { switch to ant component in the next iteration} */}
-         <div className="flex items-center w-40 gap-2">
+         <div className="flex items-center w-44 gap-2 justify-between">
             <BellOutlined style={{ fontSize: "1.7rem" }} />
-            <div className="flex items-center flex-1 gap-3">
+            <div className="flex items-center flex-1 gap-3 justify-between">
                <img src="src/assets/user.png" alt="avatar" className="size-8" />
                <div className="flex flex-col text-[8px] flex-1 justify-center">
-                  <p className="text-[8px]">Workspace</p>
-                  <p className="text-[10px]">Ahmed Tawfik</p>
+                  <p className="text-[10px]">Workspace</p>
+                  <div className="flex gap-1 items-center">
+                     <p className="text-[12px]">Ahmed Tawfik</p>
+                     <DownOutlined />
+                  </div>
                </div>
             </div>
          </div>
