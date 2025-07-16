@@ -1,23 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router";
-
-import MainLayout from "@/layouts/MainLayout";
 import App from "@/App";
-
-const router = createBrowserRouter([
-   {
-      path: "/",
-      element: <MainLayout />,
-      children: [
-         { index: true, element: <App /> },
-         { path: "signup", element: <>Signup</> },
-      ],
-   },
-]);
+import { UiProvider } from "./services/context/UiProvider";
 
 createRoot(document.getElementById("root")!).render(
    <StrictMode>
-      <RouterProvider router={router} />
+      <UiProvider>
+         <App />
+      </UiProvider>
    </StrictMode>
 );
