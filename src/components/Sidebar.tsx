@@ -10,16 +10,21 @@ import {
 import SidebarItem from "./SidebarItem";
 
 const items = [
-   { key: "1", icon: <AppstoreOutlined />, label: "Dashboard" },
+   {
+      key: "1",
+      icon: <AppstoreOutlined />,
+      label: "Dashboard",
+      path: "dashboard",
+   },
    { key: "2", icon: <PieChartOutlined />, label: "Analytics" },
    { key: "3", icon: <HistoryOutlined />, label: "History" },
-   { key: "4", icon: <CarryOutOutlined />, label: "To-Do" },
+   { key: "4", icon: <CarryOutOutlined />, label: "To-Do", path: "todo" },
    { key: "5", icon: <FormOutlined />, label: "Report" },
    { key: "6", icon: <SettingOutlined />, label: "Settings" },
 ];
 
 function Sidebar() {
-   const [selectedKey, setSelectedKey] = useState("4");
+   const [selectedKey, setSelectedKey] = useState("1");
 
    return (
       <div className="p-6 py-12 flex h-full w-[18%] items-center flex-col">

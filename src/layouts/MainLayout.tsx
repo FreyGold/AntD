@@ -1,4 +1,4 @@
-import Bar from "@/components/Bar";
+import Bar from "@/components/SearchBar";
 import Sidebar from "@/components/Sidebar";
 import { Outlet } from "react-router";
 
