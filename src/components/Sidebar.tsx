@@ -27,11 +27,11 @@ function Sidebar() {
    const [selectedKey, setSelectedKey] = useState("1");
 
    return (
-      <div className="p-6 py-12 flex h-full w-[18%] items-center flex-col">
+      <div className="px-6 py-12 flex h-full w-[18%] items-center flex-col">
          <h1 className="text-3xl text-text  font-bold">
             Task.<span className="text-primary font-[Poppins]">ai</span>
          </h1>
-         <div className="flex gap-6 flex-col mt-12">
+         <div className="flex gap-6 flex-col mt-14 items-start w-full">
             {items.map((item) => (
                <SidebarItem
                   key={item.key}

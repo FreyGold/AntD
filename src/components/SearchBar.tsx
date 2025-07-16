@@ -3,7 +3,7 @@ import { BellOutlined } from "@ant-design/icons";
 
 function Bar() {
    return (
-      <div className="flex items-center justify-between px-6 py-3 mt-8 mx-20 rounded-4xl h-12 bg-background">
+      <div className="flex items-center justify-between px-6 py-3 mt-8 mx-20 rounded-4xl h-15 bg-background">
          <Input />
          {/* // is this a correct approach? // moved to UI folder */}
          {/* { switch to ant component in the next iteration} */}

@@ -11,13 +11,14 @@ function Input() {
          placeholder="Search for something..."
          type="text"
          variant="borderless"
-         prefix={<SearchOutlined />}
+         prefix={<SearchOutlined className="mx-1" />}
          onFocus={() => setIsOpen(true)}
          onBlur={() => setIsOpen(false)}
          style={{
             width: width,
             backgroundColor: "var(--c-background-dark)",
             borderRadius: "2rem",
+            height: "110%",
             transition: "width 300ms ease-in-out",
          }}
          // is this a correct approach?

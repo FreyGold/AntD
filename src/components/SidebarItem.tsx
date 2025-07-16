@@ -13,19 +13,21 @@ function SidebarItem({
    onClick?: () => void;
 }) {
    return (
-      <NavLink
-         to={item.path ? item.path : ""}
-         className={`flex gap-6 cursor-pointer items-center px-3 py-2  h-12 rounded transition-colors ${
+      <div
+         className={`rounded w-full ${
             selected
-               ? "bg-orange-50 border-l-4 border-orange-500 text-primary w-48 "
-               : "hover:bg-gray-200 hover:text-primary"
-         }`}
-         aria-disabled={item.key === "1" || item.key === "4" ? "true" : "false"}
-         key={item.key}
-         onClick={onClick}>
-         {item.icon}
-         <p>{item.label}</p>
-      </NavLink>
+               ? "bg-orange-50 border-l-4 border-primary text-primary "
+               : "hover:bg-gray-200 hover:text-primary hover:border-l-4 "
+         }`}>
+         <NavLink
+            to={item.path ? item.path : ""}
+            className={` flex cursor-pointer items-center ml-5 gap-6 px-3 py-2 h-10 `}
+            key={item.key}
+            onClick={onClick}>
+            {item.icon}
+            <p>{item.label}</p>
+         </NavLink>
+      </div>
    );
 }
 
