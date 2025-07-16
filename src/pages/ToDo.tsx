@@ -1,7 +1,13 @@
-import ToDoLayout from "@/layouts/ToDoLayout";
+import TableView from "@/components/todo/TableView";
+import ToDoHeader from "@/components/todo/ToDoHeader";
 
 function ToDo() {
-   return <ToDoLayout />;
+   return (
+      <div>
+         <ToDoHeader />
+         <TableView />
+      </div>
+   );
 }
 
 export default ToDo;
