@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { Plus, ChevronRight } from "lucide-react";
+import TableRow from "./TableRow";
+import { DroppableArea } from "@/services/hooks/dnd";
 import {
-   Plus,
-   Paperclip,
-   MessageSquare,
-   Calendar,
-   Users as UsersAvatar,
-   Flag,
-   ChevronRight,
-   GripVertical,
-   Lock,
-   Calendar1,
-} from "lucide-react";
-import Checkbox from "@/UI/Checkbox";
+   DndContext,
+   DragOverlay,
+   type DragEndEvent,
+   type DragStartEvent,
+} from "@dnd-kit/core";
+import {
+   restrictToVerticalAxis,
+   restrictToWindowEdges,
+} from "@dnd-kit/modifiers";
 
 interface TodoItem {
    id: string;
@@ -109,19 +109,34 @@ const mockTodos: TodoItem[] = [
 ];
 
 const TodoList: React.FC = () => {
-   const getPriorityColor = (priority?: string) => {
-      switch (priority) {
-         case "high":
-            return "text-red-500";
-         case "medium":
-            return "text-yellow-500";
-         case "low":
-            return "text-green-500";
-         default:
-            return "text-muted-foreground";
-      }
-   };
+   const [items, setItems] = useState(mockTodos);
+   const [activeId, setActiveId] = useState<string | null>(null);
 
+   //TODO: I tried to but got hopeless, add animation to the dropped on element too, and hide the element getting dragged
+   const handleDragEnd = (event: DragEndEvent) => {
+      const { active, over } = event;
+      if (over && active.id !== over.id) {
+         setItems((currentItems) => {
+            const oldIndex = currentItems.findIndex(
+               (item) => item.id === active.id
+            );
+            const newIndex = currentItems.findIndex(
+               (item) => item.id === over.id
+            );
+
+            const newItems = [...currentItems];
+            [newItems[oldIndex], newItems[newIndex]] = [
+               newItems[newIndex],
+               newItems[oldIndex],
+            ];
+            return newItems;
+         });
+      }
+      setActiveId(null);
+   };
+   const handleDragStart = (event: DragStartEvent) => {
+      setActiveId(event.active.id as string);
+   };
    return (
       <div className="flex-1 min-w-full max-w-5xl bg-card border border-border rounded-lg shadow-sm">
          {/* Header */}
@@ -135,136 +150,26 @@ const TodoList: React.FC = () => {
 
          {/* Todo Items */}
          <div className="divide-y divide-border">
-            {mockTodos.map((todo) => (
-               <div
-                  key={todo.id}
-                  className="flex items-center gap-2 px-4 py-2.5 hover:bg-muted/30 transition-colors group">
-                  {/* Expand/Collapse or Drag Handle */}
-                  <div className="w-4 flex justify-center ml-4">
-                     {todo.hasChildren ? (
-                        <button className="text-muted-foreground hover:text-foreground">
-                           <ChevronRight className="w-3 h-3" />
-                        </button>
-                     ) : (
-                        ""
-                     )}
-                  </div>
-
-                  {/* Checkbox */}
-                  <Checkbox
-                     // checked={todo.completed}
-                     // TODO: use the checked only when you implement the api calls
-                     className="w-4 h-4 accent-primary"
-                  />
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0 flex items-center gap-2">
-                     <span
-                        className={`text-sm ${
-                           todo.completed
-                              ? "line-through text-muted-foreground"
-                              : "text-foreground"
-                        }`}>
-                        {todo.title}
-                     </span>
-
-                     {/* Icons section */}
-                     <div className="flex items-center gap-2 text-muted-foreground mx-2">
-                        {/* Attachments */}
-                        {todo.attachments && (
-                           <div className="flex items-center gap-1">
-                              <Paperclip className="w-3.5 h-3.5" />
-                              <span className="text-xs">
-                                 {todo.attachments}
-                              </span>
-                           </div>
-                        )}
-
-                        {/* Comments */}
-                        {todo.comments && (
-                           <div className="flex items-center gap-1">
-                              <MessageSquare className="w-3.5 h-3.5" />
-                              <span className="text-xs">{todo.comments}</span>
-                           </div>
-                        )}
-
-                        {/* Users icon */}
-                        {todo.hasUsers && (
-                           <UsersAvatar className="w-3.5 h-3.5" />
-                        )}
-
-                        {/* Lock icon */}
-                        {todo.hasLock && <Lock className="w-3.5 h-3.5" />}
-
-                        {/* Calendar icon */}
-                        {todo.hasCalendar && (
-                           <Calendar className="w-3.5 h-3.5" />
-                        )}
+            <DndContext
+               onDragEnd={handleDragEnd}
+               onDragStart={handleDragStart}
+               modifiers={[restrictToVerticalAxis, restrictToWindowEdges]}>
+               {items.map((todo) => (
+                  <DroppableArea id={todo.id} key={todo.id}>
+                     <div>
+                        <TableRow todo={todo} />
                      </div>
-
-                     {/* Tags */}
-                     {todo.tags?.map((tag) => (
-                        <span
-                           key={tag}
-                           className={`text-xs px-2 py-0.5 h-5 border rounded-md inline-flex items-center ${
-                              todo.tagColors?.[tag] ||
-                              "bg-secondary text-secondary-foreground border-border"
-                           }`}>
-                           {tag}
-                        </span>
-                     ))}
-                  </div>
-
-                  {/* Right side - Table columns */}
-                  <div className="flex items-center">
-                     {/* Table Columns */}
-                     <div className="flex items-center">
-                        {/* Assignee Column */}
-                        <div className="w-14 flex justify-center border-r border-border pr-4 mr-4">
-                           {todo.assignee && (
-                              <div className="w-5 h-5 rounded-full bg-orange-200 text-orange-800 flex items-center justify-center">
-                                 <span className="text-xs font-medium">
-                                    {todo.assignee.initials}
-                                 </span>
-                              </div>
-                           )}
-                           {!todo.assignee && (
-                              <div className="w-5 h-5 rounded-full flex items-center justify-center">
-                                 <span className="text-xs font-medium">
-                                    <UsersAvatar size="1.2rem" opacity="0.7" />
-                                 </span>
-                              </div>
-                           )}
-                        </div>
-
-                        {/* Due Date Column */}
-                        <div className="w-33 flex justify-center border-r border-border pr-4 mr-4">
-                           {todo.date && (
-                              <span className="text-xs text-muted-foreground whitespace-nowrap">
-                                 {todo.date}
-                              </span>
-                           )}
-                           {!todo.date && (
-                              <span className="text-xs text-muted-foreground whitespace-nowrap">
-                                 <Calendar1 size="1.2rem" opacity="0.7" />
-                              </span>
-                           )}
-                        </div>
-
-                        {/* Priority Column */}
-                        <div className="w-9 flex justify-center border-r border-border pr-4">
-                           <Flag
-                              className={`w-3.5 h-3.5 ${getPriorityColor(
-                                 todo.priority
-                              )}`}
-                           />
-                        </div>
-                        {/* Empty column */}
-                        <div className="w-6 flex justify-center"></div>
-                     </div>
-                  </div>
-               </div>
-            ))}
+                  </DroppableArea>
+               ))}
+               <DragOverlay>
+                  {activeId ? (
+                     <TableRow
+                        key={activeId}
+                        todo={items.find((item) => item.id === activeId)!}
+                     />
+                  ) : null}
+               </DragOverlay>
+            </DndContext>
          </div>
 
          {/* Add Task Button */}
