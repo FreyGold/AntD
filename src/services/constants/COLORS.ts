@@ -7,7 +7,7 @@ export const MAIN_COLORS = {
       accent: "#7ED321", // Green accent for highlights
       "accent-dark": "#6BBF1E", // Darker Green
       background: "#F8F9FA", // Lightest background
-      "background-dark": "#f3f1ef", // Slightly darker background for sections
+      "background-dark": "#f1efee", // Slightly darker background for sections
       text: "#212529", // Dark grey for primary text
       "text-light": "#6C757D", // Lighter grey for secondary text
       card: "#FFFFFF", // White for cards/containers

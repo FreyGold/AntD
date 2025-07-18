@@ -26,6 +26,9 @@ export const ANTD_THEME: ThemeConfig = {
    components: {
       Segmented: {
          itemSelectedColor: MAIN_COLORS.light.primary,
+         //TODO:
+         // itemSelectedColor: "var(--c-primary)",
+
          trackBg: MAIN_COLORS.light.background,
       },
    },

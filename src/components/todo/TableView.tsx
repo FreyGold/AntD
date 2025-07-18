@@ -1,3 +1,5 @@
+import TodoList from "./Table/Table";
+
 function TableView() {
    return (
       <div className="flex flex-col gap-4">
@@ -9,6 +11,7 @@ function TableView() {
                <p>Priority</p>
             </div>
          </div>
+         <TodoList />
       </div>
    );
 }
