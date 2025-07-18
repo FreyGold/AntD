@@ -35,7 +35,13 @@ interface TodoItem {
    hasLock?: boolean;
 }
 
-function TableRow({ todo }: { todo: TodoItem }) {
+function TableRow({
+   todo,
+   activeId,
+}: {
+   todo: TodoItem;
+   activeId?: string | null;
+}) {
    const getPriorityColor = (priority?: string) => {
       switch (priority) {
          case "high":
@@ -48,12 +54,12 @@ function TableRow({ todo }: { todo: TodoItem }) {
             return "text-muted-foreground";
       }
    };
-
+   const style = todo.id === activeId ? "opacity-90" : "";
    return (
       <DraggableItem id={todo.id}>
          <div
             id={todo.id}
-            className="flex items-center gap-2 px-4 py-2.5 hover:bg-muted/30 transition-colors group">
+            className={`flex items-center gap-2 px-4 py-2.5 hover:bg-muted/30 transition-colors group ${style}`}>
             {/* Expand/Collapse or Drag Handle */}
             <div className="w-4 justify-center hidden group-hover:block">
                <GripHorizontalIcon size="1rem" />

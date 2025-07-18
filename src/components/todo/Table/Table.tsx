@@ -157,16 +157,18 @@ const TodoList: React.FC = () => {
                {items.map((todo) => (
                   <DroppableArea id={todo.id} key={todo.id}>
                      <div>
-                        <TableRow todo={todo} />
+                        <TableRow todo={todo} activeId={activeId} />
                      </div>
                   </DroppableArea>
                ))}
                <DragOverlay>
                   {activeId ? (
-                     <TableRow
-                        key={activeId}
-                        todo={items.find((item) => item.id === activeId)!}
-                     />
+                     <div className="opacity-30">
+                        <TableRow
+                           key={activeId}
+                           todo={items.find((item) => item.id === activeId)!}
+                        />
+                     </div>
                   ) : null}
                </DragOverlay>
             </DndContext>
