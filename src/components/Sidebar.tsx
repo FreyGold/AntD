@@ -12,15 +12,36 @@ import SidebarItem from "./SidebarItem";
 const items = [
    {
       key: "1",
-      icon: <AppstoreOutlined />,
+      icon: <AppstoreOutlined style={{ fontSize: "1.4rem" }} />,
       label: "Dashboard",
       path: "dashboard",
    },
-   { key: "2", icon: <PieChartOutlined />, label: "Analytics" },
-   { key: "3", icon: <HistoryOutlined />, label: "History" },
-   { key: "4", icon: <CarryOutOutlined />, label: "To-Do", path: "todo" },
-   { key: "5", icon: <FormOutlined />, label: "Report" },
-   { key: "6", icon: <SettingOutlined />, label: "Settings" },
+   {
+      key: "2",
+      icon: <PieChartOutlined style={{ fontSize: "1.4rem" }} />,
+      label: "Analytics",
+   },
+   {
+      key: "3",
+      icon: <HistoryOutlined style={{ fontSize: "1.4rem" }} />,
+      label: "History",
+   },
+   {
+      key: "4",
+      icon: <CarryOutOutlined style={{ fontSize: "1.4rem" }} />,
+      label: "To-Do",
+      path: "todo",
+   },
+   {
+      key: "5",
+      icon: <FormOutlined style={{ fontSize: "1.4rem" }} />,
+      label: "Report",
+   },
+   {
+      key: "6",
+      icon: <SettingOutlined style={{ fontSize: "1.4rem" }} />,
+      label: "Settings",
+   },
 ];
 
 function Sidebar() {

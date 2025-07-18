@@ -23,7 +23,15 @@ export const ANTD_THEME: ThemeConfig = {
       colorBorder: MAIN_COLORS.light.border,
       ...MAIN_THEME_TOKEN,
    },
-   components: {},
+   components: {
+      Segmented: {
+         itemSelectedColor: MAIN_COLORS.light.primary,
+         //TODO:
+         // itemSelectedColor: "var(--c-primary)",
+
+         trackBg: MAIN_COLORS.light.background,
+      },
+   },
 };
 
 export const ANTD_THEME_DARK: ThemeConfig = {
@@ -36,5 +44,10 @@ export const ANTD_THEME_DARK: ThemeConfig = {
 
       ...MAIN_THEME_TOKEN,
    },
-   components: {},
+   components: {
+      Segmented: {
+         itemSelectedColor: MAIN_COLORS.dark.primary,
+         trackBg: MAIN_COLORS.dark.background,
+      },
+   },
 };
