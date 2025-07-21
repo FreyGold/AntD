@@ -5,10 +5,14 @@ import type { JSX } from "react";
 type Props = {
    id: string;
    children: JSX.Element;
+   type: string | null;
 };
-export function DraggableItem({ id, children }: Props) {
+export function DraggableItem({ id, children, type }: Props) {
    const { attributes, listeners, setNodeRef } = useDraggable({
       id,
+      data: {
+         type,
+      },
    });
 
    return (
@@ -18,8 +22,13 @@ export function DraggableItem({ id, children }: Props) {
    );
 }
 
-export function DroppableArea({ id, children }: Props) {
-   const { setNodeRef } = useDroppable({ id });
+export function DroppableArea({ id, children, type }: Props) {
+   const { setNodeRef } = useDroppable({
+      id,
+      data: {
+         type,
+      },
+   });
 
    return <div ref={setNodeRef}>{children}</div>;
 }

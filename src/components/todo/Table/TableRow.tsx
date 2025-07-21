@@ -9,39 +9,27 @@ import {
    Calendar1,
    GripHorizontalIcon,
 } from "lucide-react";
-import Checkbox from "@/UI/Checkbox";
-import { DraggableItem } from "@/services/hooks/dnd";
-
-interface TodoItem {
-   id: string;
-   title: string;
-   completed: boolean;
-   hasChildren?: boolean;
-   isExpanded?: boolean;
-   hasDragHandle?: boolean;
-   tags?: string[];
-   tagColors?: Record<string, string>;
-   attachments?: number;
-   comments?: number;
-   assignee?: {
-      name: string;
-      avatar?: string;
-      initials: string;
-   };
-   date?: string;
-   priority?: "high" | "medium" | "low";
-   hasCalendar?: boolean;
-   hasUsers?: boolean;
-   hasLock?: boolean;
-}
+import { DraggableItem } from "@/components/shared/DND";
+import type { ITask } from "@/services/types/ITask";
+import { Checkbox } from "antd";
+import { useUpdateTask } from "@/services/hooks/tasks-react-query";
 
 function TableRow({
    todo,
    activeId,
+   columnId,
 }: {
-   todo: TodoItem;
+   todo: ITask;
    activeId?: string | null;
+   columnId: string | null;
 }) {
+   const { mutate, isPending } = useUpdateTask();
+
+   const handleCheckboxChange = (e: any) => {
+      console.log("please");
+      mutate({ id: todo.id, task: { completed: e.target.checked } });
+   };
+
    const getPriorityColor = (priority?: string) => {
       switch (priority) {
          case "high":
@@ -56,11 +44,10 @@ function TableRow({
    };
    const style = todo.id === activeId ? "opacity-90" : "";
    return (
-      <DraggableItem id={todo.id}>
+      <DraggableItem id={todo.id} type={columnId}>
          <div
             id={todo.id}
             className={`flex items-center gap-2 px-4 py-2.5 hover:bg-muted/30 transition-colors group ${style}`}>
-            {/* Expand/Collapse or Drag Handle */}
             <div className="w-4 justify-center hidden group-hover:block">
                <GripHorizontalIcon size="1rem" />
             </div>
@@ -76,8 +63,10 @@ function TableRow({
 
             {/* Checkbox */}
             <Checkbox
-               // checked={todo.completed}
                // TODO: use the checked only when you implement the api calls
+               checked={todo.completed}
+               onChange={handleCheckboxChange}
+               id={todo.id}
                className="w-4 h-4 accent-primary"
             />
 
