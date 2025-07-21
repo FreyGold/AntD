@@ -1,4 +1,4 @@
-import { useDraggable, useDroppable } from "@dnd-kit/core";
+import { useDroppable } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 // import { useSortable } from "@dnd-kit/sortable";
 import type { JSX } from "react";

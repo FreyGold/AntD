@@ -1,7 +1,6 @@
 import TodoList from "./Table/Table";
 import { useMemo, useState } from "react";
 import {
-   closestCenter,
    DndContext,
    DragOverlay,
    MouseSensor,
@@ -22,12 +21,7 @@ import TableRow from "./Table/TableRow";
 
 function TableView() {
    const { data: tasks, isLoading, isError, error } = useGetTasks();
-   const {
-      data: columns,
-      isLoading: colIsLoading,
-      isError: colIsError,
-      error: colError,
-   } = useGetColumns();
+   const { data: columns } = useGetColumns();
 
    // NOTE: this was implemented to solve the problem of an overlay getting created over the checkbox
    const sensors = useSensors(
