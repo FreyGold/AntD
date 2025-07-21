@@ -3,10 +3,26 @@ import { Button, Modal } from "antd";
 import { Plus } from "lucide-react";
 import ModalForm from "./ModalForm";
 import { Form } from "antd";
-const ModalButton = ({ columnId }: { columnId?: string }) => {
+
+interface ModalButtonProps {
+   columnId?: string;
+   [key: string]: any;
+}
+
+type buttonType =
+   | "text"
+   | "link"
+   | "default"
+   | "primary"
+   | "dashed"
+   | undefined;
+
+const ModalButton: React.FC<ModalButtonProps> = ({ columnId, ...props }) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
    const [form] = Form.useForm();
 
+   const buttonType: buttonType =
+      { ...props }.length === 0 ? undefined : "text";
    const showModal = () => {
       setIsModalOpen(true);
    };
@@ -14,7 +30,6 @@ const ModalButton = ({ columnId }: { columnId?: string }) => {
    const handleCancel = () => {
       setIsModalOpen(false);
    };
-
    const handleSubmit = () => {
       form
          .validateFields()
@@ -31,9 +46,10 @@ const ModalButton = ({ columnId }: { columnId?: string }) => {
    return (
       <>
          <Button
-            type="text"
+            type={buttonType}
             style={{ color: "var(--c-primary)" }}
-            onClick={showModal}>
+            onClick={showModal}
+            {...props}>
             <Plus className="w-4 h-4 mr-1" />
             Add Task
          </Button>
