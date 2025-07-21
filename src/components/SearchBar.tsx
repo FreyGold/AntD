@@ -1,4 +1,4 @@
-import Input from "@/UI/Input";
+import Input from "@/components/UI/Input";
 import { BellOutlined, DownOutlined } from "@ant-design/icons";
 
 function SearchBar() {

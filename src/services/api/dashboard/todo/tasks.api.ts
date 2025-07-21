@@ -18,8 +18,9 @@ export const createTask = async (task: ITask) => {
    return res.data;
 };
 
+// use patch because put replaces the whole task
 export const updateTask = async (task: Partial<ITask>, id: string) => {
-   const res = await axios.put(`/tasks/${id}`, task);
+   const res = await axios.patch(`/tasks/${id}`, task);
    return res.data;
 };
 

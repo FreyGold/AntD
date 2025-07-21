@@ -1,5 +1,3 @@
-import { DndContext } from "@dnd-kit/core";
-
 import { type ReactNode } from "react";
 import { DarkLightProvider } from "./DarkLightProvider";
 import AntDProvider from "./AntDProvider";
@@ -12,9 +10,7 @@ export const UiProvider = ({ children }: { children: ReactNode }) => {
       <DarkLightProvider>
          <ColorsProvider>
             <AntDProvider>
-               <ReactQueryProvider>
-                  <DndContext>{children}</DndContext>
-               </ReactQueryProvider>
+               <ReactQueryProvider>{children}</ReactQueryProvider>
             </AntDProvider>
          </ColorsProvider>
       </DarkLightProvider>
