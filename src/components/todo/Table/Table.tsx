@@ -3,6 +3,7 @@ import TableRow from "./TableRow";
 import { DroppableArea } from "@/components/shared/DND";
 
 import type { ITask } from "@/services/types/ITask";
+import { SortableContext } from "@dnd-kit/sortable";
 
 const TodoList = ({
    tasks,
@@ -25,7 +26,7 @@ const TodoList = ({
 
          <div className="divide-y divide-border">
             {tasks.map((todo) => (
-               <DroppableArea id={todo.id} key={todo.id} type={columnId}>
+               <SortableContext id={todo.id} key={todo.id} items={tasks}>
                   <div>
                      <TableRow
                         todo={todo}
@@ -33,7 +34,7 @@ const TodoList = ({
                         columnId={columnId}
                      />
                   </div>
-               </DroppableArea>
+               </SortableContext>
             ))}
          </div>
 

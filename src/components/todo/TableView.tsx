@@ -1,8 +1,13 @@
 import TodoList from "./Table/Table";
 import { useMemo, useState } from "react";
 import {
+   closestCenter,
    DndContext,
    DragOverlay,
+   MouseSensor,
+   TouchSensor,
+   useSensor,
+   useSensors,
    type DragEndEvent,
    type DragStartEvent,
 } from "@dnd-kit/core";
@@ -23,6 +28,24 @@ function TableView() {
       isError: colIsError,
       error: colError,
    } = useGetColumns();
+
+   // NOTE: this was implemented to solve the problem of an overlay getting created over the checkbox
+   const sensors = useSensors(
+      useSensor(MouseSensor, {
+         // Require the mouse to move by 10 pixels before activating
+         activationConstraint: {
+            distance: 10,
+            delay: 250,
+         },
+      }),
+      useSensor(TouchSensor, {
+         // Press delay of 250ms, with tolerance of 5px of movement
+         activationConstraint: {
+            delay: 250,
+            tolerance: 5,
+         },
+      })
+   );
 
    const { mutate: mutateColumn } = useUpdateColumn();
 
@@ -156,6 +179,7 @@ function TableView() {
             </div>
          </div>
          <DndContext
+            sensors={sensors}
             onDragEnd={handleDragEnd}
             onDragStart={handleDragStart}
             modifiers={[restrictToVerticalAxis, restrictToWindowEdges]}>
