@@ -99,26 +99,17 @@ function TableView() {
       setActiveId(null);
       const { active, over } = event;
 
-      console.log("1");
       if (!over || active.id === over.id) {
          return;
       }
-      console.log("2");
 
       if (!columns) {
          return;
       }
-      console.log("3");
 
       if (!over.data.current || !active.data.current) {
-         console.log(over);
-         console.log("----------------");
-
-         console.log(active.data);
          return;
       }
-      console.log("4");
-      console.log(active.data, over.data);
       const activeTaskOrder =
          columns[+active.data.current.type - 1].tasksIdsOrder;
       const overTaskOrder = columns[+over.data.current.type - 1].tasksIdsOrder;
@@ -129,15 +120,9 @@ function TableView() {
       const newActiveTaskOrder = Array.from(activeTaskOrder);
       const newOverTaskOrder = Array.from(overTaskOrder);
 
-      console.log("-----1", newActiveTaskOrder, newOverTaskOrder);
-
-      console.log("-----3", newActiveTaskOrder, newOverTaskOrder);
-      console.log("5");
-
       if (active.data.current.type === over.data.current.type) {
          const [activeMovedItem] = newActiveTaskOrder.splice(activeIndex, 1);
          newActiveTaskOrder.splice(overIndex, 0, activeMovedItem);
-         console.log("-----a", newActiveTaskOrder, newOverTaskOrder);
 
          mutateColumn({
             id: active.data.current.type,
@@ -146,8 +131,6 @@ function TableView() {
       } else {
          const [activeMovedItem] = newActiveTaskOrder.splice(activeIndex, 1);
          const [overMovedItem] = newOverTaskOrder.splice(overIndex, 1);
-
-         console.log("-----b", newActiveTaskOrder, newOverTaskOrder);
 
          newOverTaskOrder.splice(overIndex, 0, activeMovedItem);
          newActiveTaskOrder.splice(activeIndex, 0, overMovedItem);

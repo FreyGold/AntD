@@ -1,210 +1,246 @@
 {
-   "tasks": [
-      {
-         "id": "1",
-         "title": "Instructions for using this template",
-         "completed": false,
-         "type": "todo",
-         "hasChildren": true,
-         "tags": ["Project", "Published"],
-         "tagColors": {
-            "Project": "bg-red-100 text-red-700 border-red-200",
-            "Published": "bg-green-100 text-green-700 border-green-200"
-         },
-         "attachments": 3,
-         "assignee": {
-            "name": "User 1",
-            "initials": "U1"
-         },
-         "date": "12 Apr '23",
-         "hasLock": true,
-         "hasCalendar": true
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Instructions for using this template",
+      "completed": true,
+      "type": "todo",
+      "hasChildren": true,
+      "tags": [
+        "Project",
+        "Published"
+      ],
+      "tagColors": {
+        "Project": "bg-red-100 text-red-700 border-red-200",
+        "Published": "bg-green-100 text-green-700 border-green-200"
       },
-      {
-         "id": "2",
-         "title": "Redesign and launch updated mobile app",
-         "completed": false,
-         "type": "progress",
-         "hasChildren": true,
-         "tags": ["UX Design"],
-         "tagColors": {
-            "UX Design": "bg-orange-100 text-orange-700 border-orange-200"
-         },
-         "comments": 2,
-         "assignee": {
-            "name": "User 2",
-            "initials": "U2"
-         },
-         "date": "14 Apr '23",
-         "priority": "high",
-         "hasCalendar": true
+      "attachments": 3,
+      "assignee": {
+        "name": "User 1",
+        "initials": "U1"
       },
-      {
-         "id": "3",
-         "title": "Onboarding tour for new users with engagement",
-         "completed": false,
-         "type": "progress",
-         "hasDragHandle": true,
-         "comments": 4,
-         "assignee": {
-            "name": "User 3",
-            "initials": "U3"
-         },
-         "date": "16 Apr '23",
-         "priority": "high",
-         "hasLock": true
+      "date": "12 Apr '23",
+      "hasLock": true,
+      "hasCalendar": true
+    },
+    {
+      "id": "2",
+      "title": "Redesign and launch updated mobile app",
+      "completed": false,
+      "type": "progress",
+      "hasChildren": true,
+      "tags": [
+        "UX Design"
+      ],
+      "tagColors": {
+        "UX Design": "bg-orange-100 text-orange-700 border-orange-200"
       },
-      {
-         "id": "4",
-         "title": "Coordinate new employee offsite",
-         "completed": false,
-         "type": "todo",
-         "hasChildren": true,
-         "tags": ["UX Integration", "On-going"],
-         "tagColors": {
-            "UX Integration": "bg-purple-100 text-purple-700 border-purple-200",
-            "On-going": "bg-cyan-100 text-cyan-700 border-cyan-200"
-         },
-         "attachments": 1,
-         "comments": 6,
-         "hasUsers": true,
-         "hasCalendar": true
+      "comments": 2,
+      "assignee": {
+        "name": "User 2",
+        "initials": "U2"
       },
-      {
-         "id": "5",
-         "title": "Instructions for using this template",
-         "completed": false,
-         "type": "todo",
-         "hasChildren": true,
-         "attachments": 6,
-         "comments": 12,
-         "assignee": {
-            "name": "User 4",
-            "initials": "U4"
-         },
-         "date": "17 Apr '23",
-         "hasLock": true,
-         "hasCalendar": true
+      "date": "14 Apr '23",
+      "priority": "high",
+      "hasCalendar": true
+    },
+    {
+      "id": "3",
+      "title": "Onboarding tour for new users with engagement",
+      "completed": false,
+      "type": "progress",
+      "hasDragHandle": true,
+      "comments": 4,
+      "assignee": {
+        "name": "User 3",
+        "initials": "U3"
       },
-      {
-         "id": "6",
-         "title": "Setup continuous integration pipeline",
-         "completed": false,
-         "type": "todo",
-         "hasChildren": false,
-         "tags": ["DevOps", "Infrastructure"],
-         "tagColors": {
-            "DevOps": "bg-blue-100 text-blue-700 border-blue-200",
-            "Infrastructure": "bg-gray-100 text-gray-700 border-gray-200"
-         },
-         "attachments": 2,
-         "comments": 3,
-         "assignee": {
-            "name": "User 5",
-            "initials": "U5"
-         },
-         "date": "20 Apr '23",
-         "priority": "medium",
-         "hasCalendar": false
+      "date": "16 Apr '23",
+      "priority": "high",
+      "hasLock": true
+    },
+    {
+      "id": "4",
+      "title": "Coordinate new employee offsite",
+      "completed": false,
+      "type": "todo",
+      "hasChildren": true,
+      "tags": [
+        "UX Integration",
+        "On-going"
+      ],
+      "tagColors": {
+        "UX Integration": "bg-purple-100 text-purple-700 border-purple-200",
+        "On-going": "bg-cyan-100 text-cyan-700 border-cyan-200"
       },
-      {
-         "id": "7",
-         "title": "Conduct user research interviews",
-         "completed": false,
-         "type": "todo",
-         "hasChildren": true,
-         "tags": ["Research", "User Testing"],
-         "tagColors": {
-            "Research": "bg-indigo-100 text-indigo-700 border-indigo-200",
-            "User Testing": "bg-pink-100 text-pink-700 border-pink-200"
-         },
-         "comments": 8,
-         "assignee": {
-            "name": "User 6",
-            "initials": "U6"
-         },
-         "date": "18 Apr '23",
-         "priority": "low",
-         "hasLock": false,
-         "hasCalendar": true
+      "attachments": 1,
+      "comments": 6,
+      "hasUsers": true,
+      "hasCalendar": true
+    },
+    {
+      "id": "5",
+      "title": "Instructions for using this template",
+      "completed": false,
+      "type": "todo",
+      "hasChildren": true,
+      "attachments": 6,
+      "comments": 12,
+      "assignee": {
+        "name": "User 4",
+        "initials": "U4"
       },
-      {
-         "id": "8",
-         "title": "Update brand guidelines and assets",
-         "completed": false,
-         "type": "progress",
-         "hasDragHandle": true,
-         "tags": ["Design", "Branding"],
-         "tagColors": {
-            "Design": "bg-yellow-100 text-yellow-700 border-yellow-200",
-            "Branding": "bg-rose-100 text-rose-700 border-rose-200"
-         },
-         "attachments": 15,
-         "comments": 5,
-         "assignee": {
-            "name": "User 7",
-            "initials": "U7"
-         },
-         "date": "25 Apr '23",
-         "hasUsers": true
+      "date": "17 Apr '23",
+      "hasLock": true,
+      "hasCalendar": true
+    },
+    {
+      "id": "6",
+      "title": "Setup continuous integration pipeline",
+      "completed": true,
+      "type": "todo",
+      "hasChildren": false,
+      "tags": [
+        "DevOps",
+        "Infrastructure"
+      ],
+      "tagColors": {
+        "DevOps": "bg-blue-100 text-blue-700 border-blue-200",
+        "Infrastructure": "bg-gray-100 text-gray-700 border-gray-200"
       },
-      {
-         "id": "9",
-         "title": "Optimize database performance",
-         "completed": false,
-         "type": "todo",
-         "hasChildren": false,
-         "tags": ["Backend", "Performance"],
-         "tagColors": {
-            "Backend": "bg-emerald-100 text-emerald-700 border-emerald-200",
-            "Performance": "bg-amber-100 text-amber-700 border-amber-200"
-         },
-         "comments": 1,
-         "assignee": {
-            "name": "User 8",
-            "initials": "U8"
-         },
-         "date": "22 Apr '23",
-         "priority": "high",
-         "hasLock": true
+      "attachments": 2,
+      "comments": 3,
+      "assignee": {
+        "name": "User 5",
+        "initials": "U5"
       },
-      {
-         "id": "10",
-         "title": "Plan Q2 marketing campaign",
-         "completed": false,
-         "type": "todo",
-         "hasChildren": true,
-         "tags": ["Marketing", "Campaign"],
-         "tagColors": {
-            "Marketing": "bg-violet-100 text-violet-700 border-violet-200",
-            "Campaign": "bg-teal-100 text-teal-700 border-teal-200"
-         },
-         "attachments": 8,
-         "comments": 15,
-         "hasUsers": true,
-         "assignee": {
-            "name": "User 9",
-            "initials": "U9"
-         },
-         "date": "19 Apr '23",
-         "hasCalendar": true
-      }
-   ],
-   "columns": [
-      {
-         "id": "1",
-         "type": "todo",
-         "tasksIdsOrder": ["5", "6", "8", "1"]
+      "date": "20 Apr '23",
+      "priority": "medium",
+      "hasCalendar": false
+    },
+    {
+      "id": "7",
+      "title": "Conduct user research interviews",
+      "completed": false,
+      "type": "todo",
+      "hasChildren": true,
+      "tags": [
+        "Research",
+        "User Testing"
+      ],
+      "tagColors": {
+        "Research": "bg-indigo-100 text-indigo-700 border-indigo-200",
+        "User Testing": "bg-pink-100 text-pink-700 border-pink-200"
       },
-      {
-         "id": "2",
-         "type": "progress",
-         "tasksIdsOrder": ["9", "2"]
+      "comments": 8,
+      "assignee": {
+        "name": "User 6",
+        "initials": "U6"
       },
-      {
-         "id": "3",
-         "type": "done",
-         "tasksIdsOrder": ["3", "10", "4", "7"]
-      }
-   ]
+      "date": "18 Apr '23",
+      "priority": "low",
+      "hasLock": false,
+      "hasCalendar": true
+    },
+    {
+      "id": "8",
+      "title": "Update brand guidelines and assets",
+      "completed": true,
+      "type": "progress",
+      "hasDragHandle": true,
+      "tags": [
+        "Design",
+        "Branding"
+      ],
+      "tagColors": {
+        "Design": "bg-yellow-100 text-yellow-700 border-yellow-200",
+        "Branding": "bg-rose-100 text-rose-700 border-rose-200"
+      },
+      "attachments": 15,
+      "comments": 5,
+      "assignee": {
+        "name": "User 7",
+        "initials": "U7"
+      },
+      "date": "25 Apr '23",
+      "hasUsers": true
+    },
+    {
+      "id": "9",
+      "title": "Optimize database performance",
+      "completed": false,
+      "type": "todo",
+      "hasChildren": false,
+      "tags": [
+        "Backend",
+        "Performance"
+      ],
+      "tagColors": {
+        "Backend": "bg-emerald-100 text-emerald-700 border-emerald-200",
+        "Performance": "bg-amber-100 text-amber-700 border-amber-200"
+      },
+      "comments": 1,
+      "assignee": {
+        "name": "User 8",
+        "initials": "U8"
+      },
+      "date": "22 Apr '23",
+      "priority": "high",
+      "hasLock": true
+    },
+    {
+      "id": "10",
+      "title": "Plan Q2 marketing campaign",
+      "completed": false,
+      "type": "todo",
+      "hasChildren": true,
+      "tags": [
+        "Marketing",
+        "Campaign"
+      ],
+      "tagColors": {
+        "Marketing": "bg-violet-100 text-violet-700 border-violet-200",
+        "Campaign": "bg-teal-100 text-teal-700 border-teal-200"
+      },
+      "attachments": 8,
+      "comments": 15,
+      "hasUsers": true,
+      "assignee": {
+        "name": "User 9",
+        "initials": "U9"
+      },
+      "date": "19 Apr '23",
+      "hasCalendar": true
+    }
+  ],
+  "columns": [
+    {
+      "id": "1",
+      "type": "todo",
+      "tasksIdsOrder": [
+        "5",
+        "6",
+        "8",
+        "1"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "progress",
+      "tasksIdsOrder": [
+        "9",
+        "2"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "done",
+      "tasksIdsOrder": [
+        "3",
+        "10",
+        "4",
+        "7"
+      ]
+    }
+  ]
 }
