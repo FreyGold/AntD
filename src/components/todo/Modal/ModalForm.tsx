@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import {
-   Button,
    DatePicker,
    Form,
    Input,
@@ -21,6 +19,8 @@ const normFile = (e: any) => {
    return e?.fileList;
 };
 
+const id = String(Math.ceil(Math.random() * 100000));
+
 const ModalForm = ({
    form,
    columnId,
@@ -35,6 +35,7 @@ const ModalForm = ({
          wrapperCol={{ span: 14 }}
          layout="horizontal"
          style={{ maxWidth: 600 }}>
+         <Form.Item name="id" initialValue={id} noStyle></Form.Item>
          {/* if the button is pressed from a certain table it will automatically contain it's id (type) */}
          {!columnId && (
             <Form.Item name="type" label="Category">
@@ -48,6 +49,7 @@ const ModalForm = ({
          {columnId && (
             <Form.Item name="type" initialValue={columnId} noStyle></Form.Item>
          )}
+
          <Form.Item name="title" label="Task Title">
             <Input />
          </Form.Item>
