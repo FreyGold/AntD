@@ -42,7 +42,7 @@ const TodoList = ({
 
          <div className="px-4 py-3 border-t border-border ml-3 h-10 flex items-center">
             {/* //TODO: change to antD button */}
-            <ModalButton></ModalButton>
+            <ModalButton columnId={columnId}></ModalButton>
          </div>
       </div>
    );

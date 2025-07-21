@@ -1,20 +1,31 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { Plus } from "lucide-react";
-
-const ModalButton: React.FC = () => {
+import ModalForm from "./ModalForm";
+import { Form } from "antd";
+const ModalButton = ({ columnId }: { columnId?: string }) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
+   const [form] = Form.useForm();
 
    const showModal = () => {
       setIsModalOpen(true);
    };
 
-   const handleOk = () => {
+   const handleCancel = () => {
       setIsModalOpen(false);
    };
 
-   const handleCancel = () => {
-      setIsModalOpen(false);
+   const handleSubmit = () => {
+      form
+         .validateFields()
+         .then((values) => {
+            console.log("Form Data:", values);
+            setIsModalOpen(false);
+            // TODO: add mutation
+         })
+         .catch((info) => {
+            console.log("Validation Failed:", info);
+         });
    };
 
    return (
@@ -27,14 +38,12 @@ const ModalButton: React.FC = () => {
             Add Task
          </Button>
          <Modal
-            title="Basic Modal"
+            title="Add Task Form"
             closable={{ "aria-label": "Custom Close Button" }}
             open={isModalOpen}
-            onOk={handleOk}
+            onOk={handleSubmit}
             onCancel={handleCancel}>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            <ModalForm form={form} columnId={columnId} />
          </Modal>
       </>
    );
