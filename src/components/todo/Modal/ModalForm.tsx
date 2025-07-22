@@ -50,9 +50,9 @@ const ModalForm = ({
                rules={[{ required: true }]}
                hasFeedback>
                <Radio.Group>
-                  <Radio value="todo"> To-Do </Radio>
-                  <Radio value="in-progress"> In-Progress </Radio>
-                  <Radio value="done"> Done </Radio>
+                  <Radio value="1"> To-Do </Radio>
+                  <Radio value="2"> In-Progress </Radio>
+                  <Radio value="3"> Done </Radio>
                </Radio.Group>
             </Form.Item>
          )}
