@@ -5,7 +5,7 @@ import { DroppableArea } from "@/components/shared/DND";
 import type { ITask } from "@/services/types/ITask";
 import { SortableContext } from "@dnd-kit/sortable";
 import { Button } from "antd";
-import ModalButton from "../Modal/Modal";
+import ModalButton from "../Modal/ModalButton";
 
 const TodoList = ({
    tasks,

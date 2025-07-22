@@ -12,6 +12,7 @@ import {
    useUpdateColumn,
 } from "@/services/hooks/columns-react-query";
 import type { ITask } from "@/services/types/ITask";
+import dayjs from "dayjs";
 
 interface ModalButtonProps {
    columnId?: string;
@@ -28,10 +29,21 @@ type buttonType =
 
 const ModalButton: React.FC<ModalButtonProps> = ({ columnId, ...props }) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
+   const [submittable, setSubmittable] = React.useState<boolean>(false);
+
    const [form] = Form.useForm<ITask>();
 
    const { mutate: mutateTask } = useCreateTask();
    const { mutate: mutateColumn } = useAddColumnId();
+
+   const values = Form.useWatch([], form);
+
+   React.useEffect(() => {
+      form
+         .validateFields({ validateOnly: true })
+         .then(() => setSubmittable(true))
+         .catch(() => setSubmittable(false));
+   }, [form, values]);
 
    const buttonType: buttonType =
       { ...props }.length === 0 ? undefined : "text";
@@ -41,11 +53,20 @@ const ModalButton: React.FC<ModalButtonProps> = ({ columnId, ...props }) => {
 
    const handleCancel = () => {
       setIsModalOpen(false);
+      form.resetFields();
    };
    const handleSubmit = () => {
       form
          .validateFields()
          .then((values) => {
+            // TALK
+            values.date = dayjs(values.date).format("YY MMM 'YY");
+            values.assignee.initials =
+               values.assignee?.name
+                  .split(" ")
+                  .map((Initial) => Initial[0])
+                  .join("")
+                  .toUpperCase() ?? "";
             setIsModalOpen(false);
             // TODO: add mutation
             mutateTask(values);

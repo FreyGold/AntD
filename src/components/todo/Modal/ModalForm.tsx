@@ -1,4 +1,6 @@
 import { PlusOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
+
 import {
    DatePicker,
    Form,
@@ -9,6 +11,7 @@ import {
    Upload,
    type FormInstance,
 } from "antd";
+import MdEditor from "./MdEditor/MdEditor";
 
 const { TextArea } = Input;
 
@@ -31,14 +34,21 @@ const ModalForm = ({
    return (
       <Form
          form={form}
-         labelCol={{ span: 4 }}
-         wrapperCol={{ span: 14 }}
+         labelCol={{ span: 5 }}
+         wrapperCol={{ span: 50 }}
+         style={{ maxWidth: 600 }} // ASK
          layout="horizontal"
-         style={{ maxWidth: 600 }}>
+         validateMessages={{
+            required: "'${label}' is required!",
+         }}>
          <Form.Item name="id" initialValue={id} noStyle></Form.Item>
          {/* if the button is pressed from a certain table it will automatically contain it's id (type) */}
          {!columnId && (
-            <Form.Item name="type" label="Category">
+            <Form.Item
+               name="type"
+               label="Category"
+               rules={[{ required: true }]}
+               hasFeedback>
                <Radio.Group>
                   <Radio value="todo"> To-Do </Radio>
                   <Radio value="in-progress"> In-Progress </Radio>
@@ -50,26 +60,49 @@ const ModalForm = ({
             <Form.Item name="type" initialValue={columnId} noStyle></Form.Item>
          )}
 
-         <Form.Item name="title" label="Task Title">
+         <Form.Item
+            name="title"
+            label="Task Title"
+            rules={[{ required: true }]}
+            hasFeedback>
             <Input />
          </Form.Item>
-         <Form.Item name="priority" label="Priority">
-            <Select>
+         <Form.Item
+            name="priority"
+            label="Priority"
+            rules={[{ required: true }]}
+            hasFeedback>
+            <Select allowClear>
                <Select.Option value="low">Low</Select.Option>
                <Select.Option value="medium">Medium</Select.Option>
                <Select.Option value="high">High</Select.Option>
             </Select>
          </Form.Item>
 
-         <Form.Item name="date" label="Start Date">
+         <Form.Item
+            name="date"
+            label="Start Date"
+            rules={[{ required: true }]}
+            hasFeedback>
             <DatePicker />
          </Form.Item>
          <Form.Item name="due-date" label="Due Date">
             <DatePicker />
          </Form.Item>
 
-         <Form.Item name="description" label="Description">
-            <TextArea rows={4} />
+         <Form.Item
+            name="description"
+            label="Description"
+            rules={[{ required: true }]}
+            hasFeedback>
+            <TextArea />
+         </Form.Item>
+         <Form.Item
+            name={["assignee", "name"]} // ← nested path // TALK
+            label="Assignee"
+            rules={[{ required: true }]}
+            hasFeedback>
+            <Input />
          </Form.Item>
          <Form.Item name="hasLock" label="Locked" valuePropName="checked">
             <Switch />

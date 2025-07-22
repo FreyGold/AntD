@@ -1,5 +1,5 @@
 import ViewSelector from "@/components/todo/ViewSelector";
-import ModalButton from "./Modal/Modal";
+import ModalButton from "./Modal/ModalButton";
 
 function ToDoHeader() {
    return (
