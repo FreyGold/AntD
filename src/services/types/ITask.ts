@@ -10,10 +10,10 @@ export interface ITask {
    tagColors?: Record<string, string>;
    attachments?: number;
    comments?: number;
-   assignee?: {
+   assignee: {
       name: string;
       avatar?: string;
-      initials: string;
+      initials?: string;
    };
    date?: string;
    priority?: "high" | "medium" | "low";

@@ -15,6 +15,7 @@ export const getTask = async (id: string): Promise<ITask> => {
 
 export const createTask = async (task: ITask) => {
    const res = await axios.post("/tasks", task);
+   console.log(res.data);
    return res.data;
 };
 

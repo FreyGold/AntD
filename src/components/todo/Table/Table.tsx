@@ -5,7 +5,7 @@ import { DroppableArea } from "@/components/shared/DND";
 import type { ITask } from "@/services/types/ITask";
 import { SortableContext } from "@dnd-kit/sortable";
 import { Button } from "antd";
-import ModalButton from "../Modal/Modal";
+import ModalButton from "../Modal/ModalButton";
 
 const TodoList = ({
    tasks,
@@ -42,7 +42,7 @@ const TodoList = ({
 
          <div className="px-4 py-3 border-t border-border ml-3 h-10 flex items-center">
             {/* //TODO: change to antD button */}
-            <ModalButton></ModalButton>
+            <ModalButton columnId={columnId}></ModalButton>
          </div>
       </div>
    );

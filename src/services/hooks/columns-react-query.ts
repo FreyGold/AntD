@@ -1,6 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import type { IColumn } from "../types/IColumn";
-import { getColumns, updateColumn } from "../api/dashboard/todo";
+import {
+   addColumnId,
+   deleteColumnId,
+   getColumns,
+   updateColumn,
+} from "../api/dashboard/todo";
 
 export const useGetColumns = (options = {}) => {
    return useQuery<IColumn[]>({
@@ -20,4 +25,21 @@ export const useUpdateColumn = () => {
             queryClient.invalidateQueries({ queryKey: ["columns"] }),
       }
    );
+};
+
+export const useAddColumnId = () => {
+   const queryClient = useQueryClient();
+   return useMutation<IColumn, Error, { id: string; type: string }>({
+      mutationFn: ({ id, type }) => addColumnId(id, type),
+      onError: (err) => console.error("Mutation error", err),
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: ["columns"] }),
+   });
+};
+export const useDeleteColumnId = () => {
+   const queryClient = useQueryClient();
+   return useMutation<IColumn, Error, { id: string; type: string }>({
+      mutationFn: ({ id, type }) => deleteColumnId(id, type),
+      onError: (err) => console.error("Mutation error", err),
+      onSuccess: () => queryClient.invalidateQueries({ queryKey: ["columns"] }),
+   });
 };
