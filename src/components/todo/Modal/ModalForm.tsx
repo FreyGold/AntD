@@ -42,6 +42,7 @@ const ModalForm = ({
             required: "'${label}' is required!",
          }}>
          <Form.Item name="id" initialValue={id} noStyle></Form.Item>
+         <Form.Item name="completed" initialValue={false} noStyle></Form.Item>
          {/* if the button is pressed from a certain table it will automatically contain it's id (type) */}
          {!columnId && (
             <Form.Item
