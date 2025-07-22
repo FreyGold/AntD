@@ -11,8 +11,18 @@ import {
 } from "lucide-react";
 import { DraggableItem } from "@/components/shared/DND";
 import type { ITask } from "@/services/types/ITask";
-import { Checkbox } from "antd";
-import { useUpdateTask } from "@/services/hooks/tasks-react-query";
+import {
+   Button,
+   Checkbox,
+   Popconfirm,
+   type PopconfirmProps,
+} from "antd";
+import {
+   useDeleteTask,
+   useUpdateTask,
+} from "@/services/hooks/tasks-react-query";
+import { DeleteOutlined } from "@ant-design/icons";
+import { useDeleteColumnId } from "@/services/hooks/columns-react-query";
 
 function TableRow({
    todo,
@@ -23,7 +33,16 @@ function TableRow({
    activeId?: string | null;
    columnId: string | null;
 }) {
-   const { mutate, isPending } = useUpdateTask();
+   const { mutate } = useUpdateTask();
+   const { mutate: deleteTask } = useDeleteTask();
+   const { mutate: deleteColumnId } = useDeleteColumnId();
+
+   const confirm: PopconfirmProps["onConfirm"] = (e) => {
+      deleteTask(todo.id);
+      deleteColumnId({ id: todo.id, type: todo.type });
+   };
+
+   const cancel: PopconfirmProps["onCancel"] = (e) => {};
 
    const handleCheckboxChange = (e: any) => {
       console.log("please");
@@ -167,7 +186,23 @@ function TableRow({
                      />
                   </div>
                   {/* Empty column */}
-                  <div className="w-6 flex justify-center"></div>
+                  <div className="ml-3 w-6 flex justify-center opacity-80 scale-90 hover:opacity-100 hover:scale-100">
+                     <Popconfirm
+                        title="Delete the task"
+                        description="Are you sure to delete this task?"
+                        onConfirm={confirm}
+                        onCancel={cancel}
+                        okText="Yes"
+                        cancelText="No">
+                        <Button
+                           ghost
+                           icon={<DeleteOutlined />}
+                           shape="circle"
+                           color="danger"
+                           style={{ color: "var(--c-danger)" }}
+                           size="small"></Button>
+                     </Popconfirm>
+                  </div>
                </div>
             </div>
          </div>

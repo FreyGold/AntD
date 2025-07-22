@@ -17,6 +17,17 @@ export const addColumnId = async (id: string, type: string) => {
    return res.data;
 };
 
+export const deleteColumnId = async (id: string, type: string) => {
+   const column = await axios.get(`/columns/${type}`);
+   const newColumn = column.data.tasksIdsOrder.filter(
+      (taskId: string) => taskId !== id
+   );
+   const res = await axios.patch(`/columns/${type}`, {
+      tasksIdsOrder: newColumn,
+   });
+   return res.data;
+};
+
 export const updateColumn = async (column: Partial<IColumn>, id: string) => {
    const res = await axios.patch(`/columns/${id}`, column);
    return res.data;
