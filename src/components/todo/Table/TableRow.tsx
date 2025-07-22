@@ -11,12 +11,7 @@ import {
 } from "lucide-react";
 import { DraggableItem } from "@/components/shared/DND";
 import type { ITask } from "@/services/types/ITask";
-import {
-   Button,
-   Checkbox,
-   Popconfirm,
-   type PopconfirmProps,
-} from "antd";
+import { Button, Checkbox, Popconfirm, type PopconfirmProps } from "antd";
 import {
    useDeleteTask,
    useUpdateTask,

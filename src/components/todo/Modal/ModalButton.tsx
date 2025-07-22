@@ -50,7 +50,7 @@ const ModalButton: React.FC<ModalButtonProps> = ({ columnId, ...props }) => {
          .validateFields()
          .then((values) => {
             console.log(values);
-            // TALK
+            // TALK about dayjs and manipulating form values
             values.date = dayjs(values.date).format("YY MMM 'YY");
             values.assignee.initials =
                values.assignee?.name
@@ -59,7 +59,6 @@ const ModalButton: React.FC<ModalButtonProps> = ({ columnId, ...props }) => {
                   .join("")
                   .toUpperCase() ?? "";
             setIsModalOpen(false);
-            // TODO: add mutation
             mutateTask(values);
             mutateColumn({ id: values.id, type: values.type });
             form.resetFields();

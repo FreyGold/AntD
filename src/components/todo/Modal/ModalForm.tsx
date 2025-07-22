@@ -49,6 +49,7 @@ const ModalForm = ({
                label="Category"
                rules={[{ required: true }]}
                hasFeedback>
+               {/* FIXME */}
                <Radio.Group>
                   <Radio value="1"> To-Do </Radio>
                   <Radio value="2"> In-Progress </Radio>
