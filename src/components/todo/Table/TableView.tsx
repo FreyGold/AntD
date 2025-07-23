@@ -10,7 +10,7 @@ import {
    type DragEndEvent,
    type DragStartEvent,
 } from "@dnd-kit/core";
-import { useGetTasks } from "@/services/hooks/tasks-react-query";
+import { useGetTasks, useUpdateTask } from "@/services/hooks/tasks-react-query";
 import { useGetColumns } from "@/services/hooks/columns-react-query";
 import {
    restrictToVerticalAxis,
@@ -42,6 +42,7 @@ function TableView() {
    );
 
    const { mutate: mutateColumn } = useUpdateColumn();
+   const { mutate: mutateTask } = useUpdateTask();
 
    const [activeId, setActiveId] = useState<string | null>(null);
    const [columnType, setColumnType] = useState<string | null>(null);
@@ -88,7 +89,18 @@ function TableView() {
    if (!columns) {
       return <div>No tasks found</div>;
    }
-
+   const taskType = (
+      type: string
+   ): "todo" | "progress" | "done" | undefined => {
+      switch (type) {
+         case "1":
+            return "todo";
+         case "2":
+            return "progress";
+         case "3":
+            return "done";
+      }
+   };
    const handleDragEnd = (event: DragEndEvent) => {
       setActiveId(null);
       const { active, over } = event;
@@ -135,6 +147,15 @@ function TableView() {
          mutateColumn({
             id: over.data.current.type,
             column: { tasksIdsOrder: newOverTaskOrder },
+         });
+         // FIXME: bug where when i change the place of a task i don't change it's type
+         mutateTask({
+            id: String(active.id),
+            task: { type: taskType(over.data.current.type) },
+         });
+         mutateTask({
+            id: String(over.id),
+            task: { type: taskType(active.data.current.type) },
          });
       }
    };

@@ -7,12 +7,14 @@ function KanbanCard({ todo }: { todo: ITask }) {
       <div className="flex flex-col gap-4 rounded-2xl bg-background p-6">
          <div className="flex justify-between items-center">
             <p className="text-lg font-semibold">{todo.title}</p>
-            <MoreHorizontal />
+            <MoreHorizontal className="text-text/60" />
          </div>
          {todo.imageUrl && (
-            <div className="rounded-2xl">
-               <img src={todo.imageUrl} alt="Sukuna vs Kashimo" />
-            </div>
+            <img
+               src={todo.imageUrl}
+               alt="Sukuna vs Kashimo"
+               className="rounded-2xl"
+            />
          )}
          <div className="p-2 text-sm font-light ">{todo.description}</div>
          <div className="flex justify-between">
