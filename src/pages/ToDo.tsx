@@ -10,8 +10,10 @@ function ToDo() {
       <div>
          <ToDoHeader view={view} setView={setView} />
 
-         {view == "List" && <TableView />}
-         {view == "Kanban" && <KanbanView />}
+         <div className="overflow-auto">
+            {view == "List" && <TableView />}
+            {view == "Kanban" && <KanbanView />}
+         </div>
       </div>
    );
 }

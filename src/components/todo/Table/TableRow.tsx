@@ -18,6 +18,7 @@ import {
 } from "@/services/hooks/tasks-react-query";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useDeleteColumnId } from "@/services/hooks/columns-react-query";
+import Tags from "../shared/Tags";
 
 function TableRow({
    todo,
@@ -124,16 +125,7 @@ function TableRow({
                </div>
 
                {/* Tags */}
-               {todo.tags?.map((tag) => (
-                  <span
-                     key={tag}
-                     className={`text-xs px-2 py-0.5 h-5 border rounded-md inline-flex items-center ${
-                        todo.tagColors?.[tag] ||
-                        "bg-secondary text-secondary-foreground border-border"
-                     }`}>
-                     {tag}
-                  </span>
-               ))}
+               <Tags todo={todo} />
             </div>
 
             {/* Right side - Table columns */}

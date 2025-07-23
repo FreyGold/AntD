@@ -3,7 +3,9 @@ export interface ITask {
    title: string;
    completed: boolean;
    type: "todo" | "progress" | "done";
+   description: string;
    hasChildren?: boolean;
+   imageUrl?: string;
    isExpanded?: boolean;
    hasDragHandle?: boolean;
    tags?: string[];

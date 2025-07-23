@@ -1,5 +1,11 @@
+import Kanban from "./Kanban";
+
 function KanbanView() {
-   return <div></div>;
+   return (
+      <div>
+         <Kanban />
+      </div>
+   );
 }
 
 export default KanbanView;
