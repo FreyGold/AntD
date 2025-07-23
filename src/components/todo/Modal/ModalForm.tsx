@@ -1,6 +1,4 @@
 import { PlusOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
-
 import {
    DatePicker,
    Form,
@@ -11,7 +9,7 @@ import {
    Upload,
    type FormInstance,
 } from "antd";
-import MdEditor from "./MdEditor/MdEditor";
+// import MdEditor from "./MdEditor/MdEditor";
 
 const { TextArea } = Input;
 
