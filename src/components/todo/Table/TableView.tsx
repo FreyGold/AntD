@@ -1,4 +1,4 @@
-import TodoList from "./Table/Table";
+import TodoList from "./Table";
 import { useMemo, useState } from "react";
 import {
    DndContext,
@@ -17,7 +17,7 @@ import {
    restrictToWindowEdges,
 } from "@dnd-kit/modifiers";
 import { useUpdateColumn } from "@/services/hooks/columns-react-query";
-import TableRow from "./Table/TableRow";
+import TableRow from "./TableRow";
 
 function TableView() {
    const { data: tasks, isLoading, isError, error } = useGetTasks();
