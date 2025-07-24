@@ -280,7 +280,7 @@ function KanbanView() {
 
             <DragOverlay>
                {activeTask ? (
-                  <div className="opacity-80">
+                  <div className="opacity-80 animate-pendulum">
                      <KanbanCard todo={activeTask} isOverlay={true} />
                   </div>
                ) : null}

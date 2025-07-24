@@ -3,7 +3,7 @@ import { Calendar1, MoreHorizontal } from "lucide-react";
 import Tags from "../shared/Tags";
 import { useDraggable } from "@dnd-kit/core";
 
-function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay: boolean }) {
+function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
    const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
       id: todo.id,
    });
@@ -17,7 +17,7 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay: boolean }) {
             <p className="text-lg font-semibold">{todo.title}</p>
             <MoreHorizontal className="text-text/60" />
          </div>
-         {/* TALK  */}
+         {/* TALK: how to fix the bug where images break control */}
          {!isDragging && !isOverlay && todo.imageUrl && (
             <img
                src={todo.imageUrl}

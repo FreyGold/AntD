@@ -47,3 +47,16 @@ body,
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
 }
+
+@keyframes pendulum {
+   0%,
+   100% {
+      transform: rotate(-5deg);
+   }
+   50% {
+      transform: rotate(5deg);
+   }
+}
+.animate-pendulum {
+   animation: pendulum 3s ease-in-out infinite;
+}
