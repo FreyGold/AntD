@@ -6,7 +6,7 @@ import type { JSX } from "react";
 type Props = {
    id: string;
    children: JSX.Element;
-   type: string | null;
+   type?: string | null;
 };
 export function DraggableItem({ id, children, type }: Props) {
    const { attributes, listeners, setNodeRef } = useSortable({

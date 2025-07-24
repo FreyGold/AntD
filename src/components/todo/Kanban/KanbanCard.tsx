@@ -1,19 +1,28 @@
 import type { ITask } from "@/services/types/ITask";
 import { Calendar1, MoreHorizontal } from "lucide-react";
 import Tags from "../shared/Tags";
+import { useDraggable } from "@dnd-kit/core";
 
-function KanbanCard({ todo }: { todo: ITask }) {
+function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay: boolean }) {
+   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+      id: todo.id,
+   });
    return (
-      <div className="flex flex-col gap-4 rounded-2xl bg-background p-6">
+      <div
+         className="flex flex-col gap-4 rounded-2xl bg-background p-6"
+         ref={setNodeRef}
+         {...attributes}
+         {...listeners}>
          <div className="flex justify-between items-center">
             <p className="text-lg font-semibold">{todo.title}</p>
             <MoreHorizontal className="text-text/60" />
          </div>
-         {todo.imageUrl && (
+         {/* TALK  */}
+         {!isDragging && !isOverlay && todo.imageUrl && (
             <img
                src={todo.imageUrl}
-               alt="Sukuna vs Kashimo"
-               className="rounded-2xl"
+               alt="img"
+               className="rounded-2xl max-h-[300px] w-full object-center object-cover"
             />
          )}
          <div className="p-2 text-sm font-light ">{todo.description}</div>
@@ -30,10 +39,8 @@ function KanbanCard({ todo }: { todo: ITask }) {
             )}
          </div>
          <div className="border-t-2 border-t-background-dark pt-4 w-full"></div>
-         {/* ASK: how to make this border span the whole card */}
          <div className="flex justify-between items-center">
             <div className="">2/5</div>
-            {/* //TODO: subtasks */}
             <div className="">
                {todo.date && (
                   <div className="flex items-center gap-2">

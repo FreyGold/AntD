@@ -95,6 +95,7 @@ const ModalButton: React.FC<ModalButtonProps> = ({
             title="Add Task Form"
             closable={{ "aria-label": "Custom Close Button" }}
             open={isModalOpen}
+            width={"600px"}
             onOk={handleSubmit}
             onCancel={handleCancel}>
             <ModalForm form={form} columnId={columnId} />
