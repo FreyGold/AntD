@@ -57,7 +57,7 @@ function Kanban({ tasks, catId, activeId, overId }: KanbanProps) {
       overId && tasks.some((task) => task.id === overId);
 
    const Placeholder = () => (
-      <div className="min-h-[200px] bg-background border-2 border-dashed border-primary/50 rounded-2xl flex items-center justify-center opacity-70 transition-all duration-200 w-full">
+      <div className="min-h-[200px] bg-background border-2 border-dashed border-primary/50 rounded-2xl flex items-center justify-center opacity-70 transition-all duration-200 w-full animate-placeholder">
          <span className="text-sm text-primary font-medium">Drop here</span>
       </div>
    );

@@ -58,5 +58,17 @@ body,
    }
 }
 .animate-pendulum {
-   animation: pendulum 3s ease-in-out infinite;
+   animation: pendulum 2s ease-in-out infinite;
+}
+@keyframes placeholder {
+   0%,
+   100% {
+      transform: scale(0.9);
+   }
+   50% {
+      transform: scale(1);
+   }
+}
+.animate-placeholder {
+   animation: placeholder 2s ease-in-out infinite;
 }

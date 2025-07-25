@@ -182,7 +182,6 @@ function KanbanView() {
                id: activeId,
                task: { type: overContainer as "todo" | "progress" | "done" },
             });
-
             await Promise.all([
                updateColumnMutation.mutateAsync({
                   id: activeColumn.id,
