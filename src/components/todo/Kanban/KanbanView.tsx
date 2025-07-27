@@ -13,7 +13,7 @@ import {
    useSensor,
    useSensors,
    PointerSensor,
-   rectIntersection, // <-- IMPORTANT: Change from closestCorners to rectIntersection
+   rectIntersection,
 } from "@dnd-kit/core";
 import { useMemo, useState } from "react";
 import KanbanCard from "./KanbanCard";

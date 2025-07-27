@@ -2,11 +2,17 @@ import type { ITask } from "@/services/types/ITask";
 import { Calendar1, MoreHorizontal } from "lucide-react";
 import Tags from "../shared/Tags";
 import { useDraggable } from "@dnd-kit/core";
+import EditTaskModalButton from "../Modal/EditTaskModalButtons";
 
 function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
    const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
       id: todo.id,
    });
+   const subtasks = todo.subtasks || [];
+   const completedSubtasksCount = subtasks.filter(
+      (subtask) => subtask.completed
+   ).length;
+   const totalSubtasksCount = subtasks.length;
    return (
       <div
          className="flex flex-col gap-4 rounded-2xl bg-background p-6"
@@ -15,7 +21,10 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
          {...listeners}>
          <div className="flex justify-between items-center">
             <p className="text-lg font-semibold">{todo.title}</p>
-            <MoreHorizontal className="text-text/60" />
+            <EditTaskModalButton
+               task={todo}
+               icon={<MoreHorizontal className="text-text/60" />}
+            />
          </div>
          {/* TALK: how to fix the bug where images break control */}
          {!isDragging && !isOverlay && todo.imageUrl && (
@@ -40,13 +49,16 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
          </div>
          <div className="border-t-2 border-t-background-dark pt-4 w-full"></div>
          <div className="flex justify-between items-center">
-            <div className="">2/5</div>
+            <div className="">
+               {subtasks.length > 0 &&
+                  `${completedSubtasksCount} / ${totalSubtasksCount}`}
+            </div>
             <div className="">
                {todo.date && (
                   <div className="flex items-center gap-2">
                      <Calendar1 size="1.2rem" opacity="0.7" />
                      <span className="text-xs text-muted-foreground whitespace-nowrap">
-                        {todo.date}
+                        {todo.date as string}
                      </span>
                   </div>
                )}
