@@ -1,11 +1,19 @@
-import TableView from "@/components/todo/TableView";
+import KanbanView from "@/components/todo/Kanban/KanbanView";
+import TableView from "@/components/todo/Table/TableView";
 import ToDoHeader from "@/components/todo/ToDoHeader";
+import { useState } from "react";
 
 function ToDo() {
+   const [view, setView] = useState<"List" | "Kanban">("List");
+
    return (
       <div>
-         <ToDoHeader />
-         <TableView />
+         <ToDoHeader view={view} setView={setView} />
+
+         <div className="overflow-auto">
+            {view == "List" && <TableView />}
+            {view == "Kanban" && <KanbanView />}
+         </div>
       </div>
    );
 }

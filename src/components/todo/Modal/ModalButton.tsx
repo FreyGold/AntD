@@ -17,6 +17,7 @@ import dayjs from "dayjs";
 interface ModalButtonProps {
    columnId?: string;
    [key: string]: any;
+   type?: string;
 }
 
 type buttonType =
@@ -27,7 +28,11 @@ type buttonType =
    | "dashed"
    | undefined;
 
-const ModalButton: React.FC<ModalButtonProps> = ({ columnId, ...props }) => {
+const ModalButton: React.FC<ModalButtonProps> = ({
+   type,
+   columnId,
+   ...props
+}) => {
    const [isModalOpen, setIsModalOpen] = useState(false);
 
    const [form] = Form.useForm<ITask>();
@@ -70,18 +75,27 @@ const ModalButton: React.FC<ModalButtonProps> = ({ columnId, ...props }) => {
 
    return (
       <>
-         <Button
-            type={buttonType}
-            style={{ color: "var(--c-primary)" }}
-            onClick={showModal}
-            {...props}>
-            <Plus className="w-4 h-4 mr-1" />
-            Add Task
-         </Button>
+         {!type && (
+            <Button
+               type={buttonType}
+               style={{ color: "var(--c-primary)" }}
+               onClick={showModal}
+               {...props}>
+               <Plus className="w-4 h-4 mr-1" />
+               Add Task
+            </Button>
+         )}
+         {type && (
+            <Plus
+               onClick={showModal}
+               className="cursor-pointer hover:text-text/100 hover:scale-120 transition-transform"
+            />
+         )}
          <Modal
             title="Add Task Form"
             closable={{ "aria-label": "Custom Close Button" }}
             open={isModalOpen}
+            width={"600px"}
             onOk={handleSubmit}
             onCancel={handleCancel}>
             <ModalForm form={form} columnId={columnId} />
