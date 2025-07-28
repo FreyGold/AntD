@@ -1,7 +1,7 @@
 import { useSearch } from "@/services/context/SearchProvider";
 import { SearchOutlined } from "@ant-design/icons";
 import { Input as AntDInput } from "antd";
-import { useState, useRef, useEffect } from "react"; // Import useRef and useEffect
+import { useState, useRef } from "react"; // Import useRef and useEffect
 
 function Input() {
    const { setSearch } = useSearch();

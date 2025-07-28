@@ -17,9 +17,6 @@ interface KanbanProps {
 }
 
 function Kanban({ tasks, catId, activeId, overId }: KanbanProps) {
-   // This useDroppable is for the entire column, it should cover the whole area
-   // when there are items, and serve as a fallback if the explicit empty zone is missed.
-   // We'll primarily rely on the empty zone for empty column drops.
    const { setNodeRef: setColumnNodeRef, isOver } = useDroppable({
       id: catId,
    });
@@ -50,7 +47,6 @@ function Kanban({ tasks, catId, activeId, overId }: KanbanProps) {
       }
    };
 
-   // Check if we're in a different container drag scenario
    const isActiveFromDifferentContainer =
       activeId && !tasks.some((task) => task.id === activeId);
    const isOverTaskInThisContainer =

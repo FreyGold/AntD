@@ -15,10 +15,9 @@ import {
    PointerSensor,
    rectIntersection,
 } from "@dnd-kit/core";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import KanbanCard from "./KanbanCard";
 import { useSearch } from "@/services/context/SearchProvider";
-import { delay } from "@/services/utils/helper";
 
 function KanbanView() {
    const { data: rawTasks, isLoading, isError, error } = useGetTasks();
@@ -271,7 +270,7 @@ function KanbanView() {
       <div className="grid grid-cols-3 gap-2 space-x-6 mb-6">
          <DndContext
             sensors={sensors}
-            collisionDetection={rectIntersection} // <-- IMPORTANT: Change applied here
+            collisionDetection={rectIntersection}
             onDragStart={handleDragStart}
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}>

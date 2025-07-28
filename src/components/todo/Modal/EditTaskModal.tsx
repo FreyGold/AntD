@@ -5,7 +5,6 @@ import {
    DatePicker,
    Switch,
    Tag,
-   Upload,
    Space,
    Button,
    Divider,
@@ -14,9 +13,7 @@ import {
    Checkbox,
 } from "antd";
 import {
-   PaperClipOutlined,
    CalendarOutlined,
-   LockOutlined,
    UserOutlined,
    PlusOutlined,
    BgColorsOutlined,
