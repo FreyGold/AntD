@@ -1,5 +1,6 @@
 import Input from "@/components/UI/Input";
 import { BellOutlined, DownOutlined } from "@ant-design/icons";
+import ThemeToggleButton from "./ToggleTheme";
 
 function SearchBar() {
    return (
@@ -7,7 +8,8 @@ function SearchBar() {
          <Input />
          {/* // is this a correct approach? // moved to UI folder */}
          {/* { switch to ant component in the next iteration} */}
-         <div className="flex items-center w-44 gap-2 justify-between">
+         <div className="flex items-center w-64 gap-2 justify-between">
+            <ThemeToggleButton></ThemeToggleButton>
             <BellOutlined style={{ fontSize: "1.7rem" }} />
             <div className="flex items-center flex-1 gap-3 justify-between">
                <img src="src/assets/user.png" alt="avatar" className="size-8" />
