@@ -3,6 +3,7 @@ import { DarkLightProvider } from "./DarkLightProvider";
 import AntDProvider from "./AntDProvider";
 import { ColorsProvider } from "./ColorsProvider";
 import { ReactQueryProvider } from "./ReactQueryProvider";
+import { SearchProvider } from "./SearchProvider";
 // import other providers here as needed
 
 export const UiProvider = ({ children }: { children: ReactNode }) => {
@@ -10,7 +11,9 @@ export const UiProvider = ({ children }: { children: ReactNode }) => {
       <DarkLightProvider>
          <ColorsProvider>
             <AntDProvider>
-               <ReactQueryProvider>{children}</ReactQueryProvider>
+               <ReactQueryProvider>
+                  <SearchProvider>{children}</SearchProvider>
+               </ReactQueryProvider>
             </AntDProvider>
          </ColorsProvider>
       </DarkLightProvider>

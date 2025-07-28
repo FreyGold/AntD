@@ -15,14 +15,17 @@ import {
    PointerSensor,
    rectIntersection,
 } from "@dnd-kit/core";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import KanbanCard from "./KanbanCard";
+import { useSearch } from "@/services/context/SearchProvider";
+import { delay } from "@/services/utils/helper";
 
 function KanbanView() {
-   const { data: tasks, isLoading, isError, error } = useGetTasks();
+   const { data: rawTasks, isLoading, isError, error } = useGetTasks();
    const { data: columns } = useGetColumns();
    const [activeId, setActiveId] = useState<string | null>(null);
    const [overId, setOverId] = useState<string | null>(null);
+   const { search } = useSearch();
 
    const updateTaskMutation = useUpdateTask();
    const updateColumnMutation = useUpdateColumn();
@@ -34,6 +37,20 @@ function KanbanView() {
          },
       })
    );
+
+   const tasks = useMemo(() => {
+      if (!rawTasks) {
+         return [];
+      }
+      if (!search) {
+         return rawTasks;
+      }
+      return rawTasks.filter(
+         (task) =>
+            task.title?.toLowerCase().includes(search.toLowerCase()) ||
+            task.description?.toLowerCase().includes(search.toLowerCase())
+      );
+   }, [rawTasks, search]);
 
    const orderedColumns = useMemo(() => {
       if (!tasks?.length || !columns?.length) {

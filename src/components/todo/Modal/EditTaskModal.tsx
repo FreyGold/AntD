@@ -237,7 +237,6 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ form, task }) => {
 
    return (
       <Form form={form} layout="vertical" style={{ paddingTop: 16 }}>
-         {/* Hidden fields */}
          <Form.Item name="tags" hidden>
             <Input />
          </Form.Item>
@@ -248,7 +247,6 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ form, task }) => {
             <Input />
          </Form.Item>
 
-         {/* Task Title */}
          <Form.Item
             name="title"
             label="Task Title"
@@ -256,7 +254,6 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ form, task }) => {
             <Input placeholder="Enter task title" size="large" />
          </Form.Item>
 
-         {/* Description */}
          <Form.Item name="description" label="Description">
             <TextArea
                rows={3}
@@ -265,7 +262,6 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ form, task }) => {
             />
          </Form.Item>
 
-         {/* Tags Section with Color Picker */}
          <Form.Item label="Tags">
             <div style={{ marginBottom: 8 }}>
                {tags.map((tag) => (

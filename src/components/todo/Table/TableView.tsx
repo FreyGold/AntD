@@ -18,28 +18,42 @@ import {
 } from "@dnd-kit/modifiers";
 import { useUpdateColumn } from "@/services/hooks/columns-react-query";
 import TableRow from "./TableRow";
+import { useSearch } from "@/services/context/SearchProvider";
 
 function TableView() {
-   const { data: tasks, isLoading, isError, error } = useGetTasks();
+   const { data: rawTasks, isLoading, isError, error } = useGetTasks();
    const { data: columns } = useGetColumns();
+   const { search } = useSearch();
 
    // NOTE: this was implemented to solve the problem of an overlay getting created over the checkbox
    const sensors = useSensors(
       useSensor(MouseSensor, {
-         // Require the mouse to move by 10 pixels before activating
          activationConstraint: {
             distance: 10,
             delay: 250,
          },
       }),
       useSensor(TouchSensor, {
-         // Press delay of 250ms, with tolerance of 5px of movement
          activationConstraint: {
             delay: 250,
             tolerance: 5,
          },
       })
    );
+
+   const tasks = useMemo(() => {
+      if (!rawTasks) {
+         return [];
+      }
+      if (!search) {
+         return rawTasks;
+      }
+      return rawTasks.filter(
+         (task) =>
+            task.title?.toLowerCase().includes(search.toLowerCase()) ||
+            task.description?.toLowerCase().includes(search.toLowerCase())
+      );
+   }, [rawTasks, search]);
 
    const { mutate: mutateColumn } = useUpdateColumn();
    const { mutate: mutateTask } = useUpdateTask();

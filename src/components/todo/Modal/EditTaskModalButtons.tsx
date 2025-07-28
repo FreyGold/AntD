@@ -38,7 +38,6 @@ const EditTaskModalButton: React.FC<EditTaskModalButtonProps> = ({
          .then((values) => {
             console.log("Form values before processing:", values);
 
-            // Handle date formatting
             if (values.date) {
                const dateValue = dayjs.isDayjs(values.date)
                   ? values.date
@@ -50,7 +49,6 @@ const EditTaskModalButton: React.FC<EditTaskModalButtonProps> = ({
                }
             }
 
-            // Handle assignee
             if (values.assignee) {
                values.assignee = {
                   name: values.assignee,
@@ -62,7 +60,6 @@ const EditTaskModalButton: React.FC<EditTaskModalButtonProps> = ({
                };
             }
 
-            // Ensure subtasks is properly structured
             if (values.subtasks && Array.isArray(values.subtasks)) {
                values.subtasks = values.subtasks.map((subtask: ISubtask) => {
                   if (typeof subtask === "string") {

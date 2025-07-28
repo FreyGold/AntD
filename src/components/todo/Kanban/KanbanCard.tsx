@@ -26,7 +26,6 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
                icon={<MoreHorizontal className="text-text/60" />}
             />
          </div>
-         {/* TALK: how to fix the bug where images break control */}
          {!isDragging && !isOverlay && todo.imageUrl && (
             <img
                src={todo.imageUrl}
@@ -34,7 +33,9 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
                className="rounded-2xl max-h-[300px] w-full object-center object-cover"
             />
          )}
-         <div className="p-2 text-sm font-light ">{todo.description}</div>
+         <div className="p-2 text-sm font-light line-clamp-3   ">
+            {todo.description}
+         </div>
          <div className="flex justify-between">
             <div className="flex gap-2">
                <Tags todo={todo} />
