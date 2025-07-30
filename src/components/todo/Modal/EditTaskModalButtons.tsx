@@ -96,12 +96,12 @@ const EditTaskModalButton: React.FC<EditTaskModalButtonProps> = ({
 
    return (
       <>
-         <div
+         <button
             onClick={showModal}
             className={`cursor-pointer hover:scale-110 transition-transform ${className}`}
             {...props}>
             {icon}
-         </div>
+         </button>
 
          <Modal
             title="Edit Task"

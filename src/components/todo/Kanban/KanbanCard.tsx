@@ -33,7 +33,7 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
                className="rounded-2xl max-h-[300px] w-full object-center object-cover"
             />
          )}
-         <div className="p-2 text-sm font-light line-clamp-3   ">
+         <div className="p-2 text-sm font-light line-clamp-4">
             {todo.description}
          </div>
          <div className="flex justify-between">
@@ -41,7 +41,7 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
                <Tags todo={todo} />
             </div>
             {todo.assignee && (
-               <div className="w-6 h-6 rounded-full bg-orange-200 text-orange-800 flex items-center justify-center">
+               <div className="w-6 h-6 rounded-full bg-orange-200 text-primary flex items-center justify-center">
                   <span className="text-xs font-medium">
                      {todo.assignee.initials}
                   </span>
