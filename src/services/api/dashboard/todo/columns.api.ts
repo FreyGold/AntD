@@ -1,7 +1,8 @@
 import type { IColumn } from "@/services/types/IColumn";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL =
+   "https://json-server-vercel-template-omega.vercel.app/";
 
 export const getColumns = async (): Promise<IColumn[]> => {
    const res = await axios.get("/columns");

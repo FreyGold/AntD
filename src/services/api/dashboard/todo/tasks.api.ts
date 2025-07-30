@@ -1,7 +1,8 @@
 import type { ITask } from "@/services/types/ITask";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL =
+   "https://json-server-vercel-template-omega.vercel.app/";
 
 export const getTasks = async (): Promise<ITask[]> => {
    const res = await axios.get("/tasks");
