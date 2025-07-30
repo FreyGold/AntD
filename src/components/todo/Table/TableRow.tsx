@@ -91,7 +91,7 @@ function TableRow({
          <DraggableItem id={todo.id} type={columnId}>
             <div
                id={todo.id}
-               className={`flex items-center gap-2 px-4 py-2.5 hover:bg-muted/30 transition-colors group ${style}`}>
+               className={`flex items-center gap-2 px-4 py-2.5 hover:bg-muted/30  group ${style}`}>
                <div className="w-4 justify-center hidden group-hover:block">
                   <GripHorizontalIcon size="1rem" />
                </div>

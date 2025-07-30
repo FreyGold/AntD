@@ -11,6 +11,7 @@ const MAIN_THEME_TOKEN: ThemeConfig["token"] = {
    fontSizeXL: 16,
    controlHeight: 34,
    controlHeightLG: 51,
+   motion: false,
 };
 
 //     --color-border: rgba(233, 235, 236, var(--tw-border-
