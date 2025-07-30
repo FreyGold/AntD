@@ -3,14 +3,8 @@ import { Button, Modal } from "antd";
 import { Plus } from "lucide-react";
 import ModalForm from "./ModalForm";
 import { Form } from "antd";
-import {
-   useCreateTask,
-   useUpdateTask,
-} from "@/services/hooks/tasks-react-query";
-import {
-   useAddColumnId,
-   useUpdateColumn,
-} from "@/services/hooks/columns-react-query";
+import { useCreateTask } from "@/services/hooks/tasks-react-query";
+import { useAddColumnId } from "@/services/hooks/columns-react-query";
 import type { ITask } from "@/services/types/ITask";
 import dayjs from "dayjs";
 

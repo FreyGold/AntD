@@ -61,12 +61,12 @@ function TableRow({
       setSubtasksOpen(!subtasksOpen);
    };
 
-   const confirm: PopconfirmProps["onConfirm"] = (e) => {
+   const confirm: PopconfirmProps["onConfirm"] = () => {
       deleteTask(todo.id);
       deleteColumnId({ id: todo.id, type: todo.type });
    };
 
-   const cancel: PopconfirmProps["onCancel"] = (e) => {};
+   const cancel: PopconfirmProps["onCancel"] = () => {};
 
    const handleCheckboxChange = (e: any) => {
       console.log("please");
