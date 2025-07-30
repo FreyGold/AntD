@@ -13,7 +13,7 @@ function SidebarItem({
    onClick?: () => void;
 }) {
    return (
-      <div
+      <button
          className={`rounded w-full ${
             selected
                ? "bg-orange-50 border-l-4 border-primary text-primary "
@@ -27,7 +27,7 @@ function SidebarItem({
             {item.icon}
             <p>{item.label}</p>
          </NavLink>
-      </div>
+      </button>
    );
 }
 

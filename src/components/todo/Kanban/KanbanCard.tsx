@@ -20,7 +20,7 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
          {...attributes}
          {...listeners}>
          <div className="flex justify-between items-center">
-            <p className="text-lg font-semibold">{todo.title}</p>
+            <h3 className="text-lg font-semibold">{todo.title}</h3>
             <EditTaskModalButton
                task={todo}
                icon={<MoreHorizontal className="text-text/60" />}
@@ -33,15 +33,15 @@ function KanbanCard({ todo, isOverlay }: { todo: ITask; isOverlay?: boolean }) {
                className="rounded-2xl max-h-[300px] w-full object-center object-cover"
             />
          )}
-         <div className="p-2 text-sm font-light line-clamp-4">
+         <p className="p-2 text-sm font-light line-clamp-4">
             {todo.description}
-         </div>
+         </p>
          <div className="flex justify-between">
             <div className="flex gap-2">
                <Tags todo={todo} />
             </div>
             {todo.assignee && (
-               <div className="w-6 h-6 rounded-full bg-orange-200 text-primary flex items-center justify-center">
+               <div className="w-6 h-6 rounded-full bg-primary/20 text-primary-dark flex items-center justify-center">
                   <span className="text-xs font-medium">
                      {todo.assignee.initials}
                   </span>

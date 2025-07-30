@@ -62,7 +62,7 @@ function Kanban({ tasks, catId, activeId, overId }: KanbanProps) {
       <div className="min-h-[300px]" ref={setColumnNodeRef}>
          <div className="flex justify-between items-center">
             <div className="flex items-center mt-2 gap-2">
-               <div className="text-2xl font-bold">{TableLabel()}</div>
+               <h2 className="text-2xl font-bold">{TableLabel()}</h2>
                <span className="bg-background text-secondary-foreground rounded-full text-xs px-2 py-0.5 h-5 mt-1 flex items-center">
                   {tasks.length}
                </span>

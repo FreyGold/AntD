@@ -48,7 +48,7 @@ function Sidebar() {
    const [selectedKey, setSelectedKey] = useState("1");
 
    return (
-      <div className="px-6 py-12 flex h-full w-[18%] items-center flex-col">
+      <aside className="px-6 py-12 flex h-full w-[18%] items-center flex-col">
          <h1 className="text-3xl text-text  font-bold">
             Task.<span className="text-primary font-[Poppins]">ai</span>
          </h1>
@@ -62,7 +62,7 @@ function Sidebar() {
                />
             ))}
          </div>
-      </div>
+      </aside>
    );
 }
 
