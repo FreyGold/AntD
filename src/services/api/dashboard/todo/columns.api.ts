@@ -3,6 +3,7 @@ import axios from "axios";
 
 axios.defaults.baseURL =
    "https://json-server-vercel-template-omega.vercel.app/";
+// "https://5ntn5kvl-3000.uks1.devtunnels.ms/";
 
 export const getColumns = async (): Promise<IColumn[]> => {
    const res = await axios.get("/columns");

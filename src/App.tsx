@@ -1,9 +1,11 @@
 import "@/assets/styles/global.css";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router";
 import MainLayout from "./layouts/MainLayout";
 import ToDo from "./pages/ToDo";
 import Dashboard from "./pages/Dashboard";
-import { Navigate } from "react-router";
+import Auth from "./pages/Auth";
+import ProtectedRoute from "./components/ProtectedRoute";
+import LogoutCard from "./components/LogoutCard";
 
 const router = createBrowserRouter([
    {
@@ -11,10 +13,21 @@ const router = createBrowserRouter([
       element: <MainLayout />,
       children: [
          { index: true, element: <Navigate to="/dashboard" replace /> },
-         { path: "/dashboard", element: <Dashboard /> },
-         { path: "/todo", element: <ToDo /> },
+         {
+            path: "dashboard",
+            element: (
+               <ProtectedRoute>
+                  <Dashboard />
+               </ProtectedRoute>
+            ),
+            children: [
+               { path: "todo", element: <ToDo /> },
+               { path: "settings", element: <LogoutCard /> },
+            ],
+         },
       ],
    },
+   { path: "/login", element: <Auth /> },
 ]);
 
 function App() {

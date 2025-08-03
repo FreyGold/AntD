@@ -30,7 +30,7 @@ const items = [
       key: "4",
       icon: <CarryOutOutlined style={{ fontSize: "1.4rem" }} />,
       label: "To-Do",
-      path: "todo",
+      path: "dashboard/todo",
    },
    {
       key: "5",
@@ -40,6 +40,7 @@ const items = [
    {
       key: "6",
       icon: <SettingOutlined style={{ fontSize: "1.4rem" }} />,
+      path: "dashboard/settings",
       label: "Settings",
    },
 ];
