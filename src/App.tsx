@@ -10,16 +10,16 @@ import LogoutCard from "./components/LogoutCard";
 const router = createBrowserRouter([
    {
       path: "/",
-      element: <MainLayout />,
+      element: (
+         <ProtectedRoute>
+            <MainLayout />
+         </ProtectedRoute>
+      ),
       children: [
          { index: true, element: <Navigate to="/dashboard" replace /> },
          {
             path: "dashboard",
-            element: (
-               <ProtectedRoute>
-                  <Dashboard />
-               </ProtectedRoute>
-            ),
+            element: <Dashboard />,
             children: [
                { path: "todo", element: <ToDo /> },
                { path: "settings", element: <LogoutCard /> },
